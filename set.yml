@@ -1,0 +1,374 @@
+port: 7890
+socks-port: 7891
+# redir-port: 7892
+allow-lan: false
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+
+#Proxy Group:
+# url-test 可以自动选择与指定 URL 测速后，延迟最短的服务器
+# - { name: "auto", type: url-test, proxies: ["ss1", "ss2", "vmess1"], url: "https://www.bing.com", interval: 300 }
+
+# fallback 可以尽量按照用户书写的服务器顺序，在确保服务器可用的情况下，自动选择服务器
+# - { name: "fallback-auto", type: fallback, proxies: ["ss1", "ss2", "vmess1"], url: "https://www.bing.com", interval: 300 }
+
+# select 用来允许用户手动选择 代理服务器 或 服务器组
+# 您也可以使用 RESTful API 去切换服务器，这种方式推荐在 GUI 中使用
+# - { name: "Proxy", type: select, proxies: ["ss1", "ss2", "vmess1", "auto"] }
+
+Rule:
+#Spark邮箱
+- DOMAIN,api.amplitude.com,Others
+#Twitter短链接
+- DOMAIN,t.co,Others
+- DOMAIN-SUFFIX,v2ray.com,Others
+- DOMAIN-SUFFIX,bwh1.net,Others
+# Apple 服务优化
+## 其他服务
+- DOMAIN,gs.apple.com,Others
+- DOMAIN-SUFFIX,mzstatic.com,DIRECT
+- DOMAIN-SUFFIX,akadns.net,DIRECT
+- DOMAIN-SUFFIX,aaplimg.com,DIRECT
+- DOMAIN-SUFFIX,cdn-apple.com,DIRECT
+
+## 通用部分
+- DOMAIN,itunes.apple.com,Others
+- DOMAIN,beta.itunes.apple.com,Others
+- DOMAIN-SUFFIX,apple.com,DIRECT
+- DOMAIN-SUFFIX,icloud.com,DIRECT
+- DOMAIN-SUFFIX,icloud-content.com,DIRECT
+#- DOMAIN,e.crashlytics.com,REJECT //注释此选项有助于大多数App开发者分析崩溃信息；如果您拒绝一切崩溃数据统计、搜集，请取消 # 注释。
+
+
+# 自定义规则
+## 您可以在此处插入您补充的自定义规则
+# Netflix
+- 'DOMAIN-SUFFIX,netflix.com, Netflix'
+- 'DOMAIN-SUFFIX,netflix.net, Netflix'
+- 'DOMAIN-SUFFIX,nflxext.com, Netflix'
+- 'DOMAIN-SUFFIX,nflximg.com, Netflix'
+- 'DOMAIN-SUFFIX,nflximg.net, Netflix'
+- 'DOMAIN-SUFFIX,nflxso.net, Netflix'
+- 'DOMAIN-SUFFIX,nflxvideo.net, Netflix'
+- 'DOMAIN-SUFFIX,api.gamer.com.tw, Netflix'
+- 'DOMAIN-SUFFIX,hinet.net, Netflix'
+
+# 国内网站
+- DOMAIN-SUFFIX,cn,DIRECT
+- DOMAIN-KEYWORD,-cn,DIRECT
+
+
+# 抗 DNS 污染
+- DOMAIN-KEYWORD,amazon,Others
+- DOMAIN-KEYWORD,google,Others
+- DOMAIN-SUFFIX,gmail.com,Others
+- DOMAIN-KEYWORD,youtube,Others
+- DOMAIN-KEYWORD,facebook,Others
+- DOMAIN-SUFFIX,fb.me,Others
+- DOMAIN-SUFFIX,fbcdn.net,Others
+- DOMAIN-KEYWORD,twitter,Others
+- DOMAIN-KEYWORD,instagram,Others
+- DOMAIN-KEYWORD,dropbox,Others
+- DOMAIN-SUFFIX,twimg.com,Others
+- DOMAIN-KEYWORD,blogspot,Others
+- DOMAIN-SUFFIX,youtu.be,Others
+- DOMAIN-KEYWORD,whatsapp,Others
+
+
+# 国外网站
+- DOMAIN-SUFFIX,9to5mac.com,Others
+- DOMAIN-SUFFIX,abpchina.org,Others
+- DOMAIN-SUFFIX,adblockplus.org,Others
+- DOMAIN-SUFFIX,adobe.com,Others
+- DOMAIN-SUFFIX,alfredapp.com,Others
+- DOMAIN-SUFFIX,amplitude.com,Others
+- DOMAIN-SUFFIX,ampproject.org,Others
+- DOMAIN-SUFFIX,android.com,Others
+- DOMAIN-SUFFIX,angularjs.org,Others
+- DOMAIN-SUFFIX,aolcdn.com,Others
+- DOMAIN-SUFFIX,apkpure.com,Others
+- DOMAIN-SUFFIX,appledaily.com,Others
+- DOMAIN-SUFFIX,appshopper.com,Others
+- DOMAIN-SUFFIX,appspot.com,Others
+- DOMAIN-SUFFIX,arcgis.com,Others
+- DOMAIN-SUFFIX,archive.org,Others
+- DOMAIN-SUFFIX,armorgames.com,Others
+- DOMAIN-SUFFIX,aspnetcdn.com,Others
+- DOMAIN-SUFFIX,att.com,Others
+- DOMAIN-SUFFIX,awsstatic.com,Others
+- DOMAIN-SUFFIX,azureedge.net,Others
+- DOMAIN-SUFFIX,azurewebsites.net,Others
+- DOMAIN-SUFFIX,bing.com,Others
+- DOMAIN-SUFFIX,bintray.com,Others
+- DOMAIN-SUFFIX,bit.com,Others
+- DOMAIN-SUFFIX,bit.ly,Others
+- DOMAIN-SUFFIX,bitbucket.org,Others
+- DOMAIN-SUFFIX,bjango.com,Others
+- DOMAIN-SUFFIX,bkrtx.com,Others
+- DOMAIN-SUFFIX,blog.com,Others
+- DOMAIN-SUFFIX,blogcdn.com,Others
+- DOMAIN-SUFFIX,blogger.com,Others
+- DOMAIN-SUFFIX,blogsmithmedia.com,Others
+- DOMAIN-SUFFIX,blogspot.com,Others
+- DOMAIN-SUFFIX,blogspot.hk,Others
+- DOMAIN-SUFFIX,bloomberg.com,Others
+- DOMAIN-SUFFIX,box.com,Others
+- DOMAIN-SUFFIX,box.net,Others
+- DOMAIN-SUFFIX,cachefly.net,Others
+- DOMAIN-SUFFIX,chromium.org,Others
+- DOMAIN-SUFFIX,cl.ly,Others
+- DOMAIN-SUFFIX,cloudflare.com,Others
+- DOMAIN-SUFFIX,cloudfront.net,Others
+- DOMAIN-SUFFIX,cloudmagic.com,Others
+- DOMAIN-SUFFIX,cmail19.com,Others
+- DOMAIN-SUFFIX,cnet.com,Others
+- DOMAIN-SUFFIX,cocoapods.org,Others
+- DOMAIN-SUFFIX,comodoca.com,Others
+- DOMAIN-SUFFIX,content.office.net,Others
+- DOMAIN-SUFFIX,crashlytics.com,Others
+- DOMAIN-SUFFIX,culturedcode.com,Others
+- DOMAIN-SUFFIX,d.pr,Others
+- DOMAIN-SUFFIX,danilo.to,Others
+- DOMAIN-SUFFIX,dayone.me,Others
+- DOMAIN-SUFFIX,db.tt,Others
+- DOMAIN-SUFFIX,deskconnect.com,Others
+- DOMAIN-SUFFIX,digicert.com,Others
+- DOMAIN-SUFFIX,disq.us,Others
+- DOMAIN-SUFFIX,disqus.com,Others
+- DOMAIN-SUFFIX,disquscdn.com,Others
+- DOMAIN-SUFFIX,dnsimple.com,Others
+- DOMAIN-SUFFIX,docker.com,Others
+- DOMAIN-SUFFIX,dribbble.com,Others
+- DOMAIN-SUFFIX,droplr.com,Others
+- DOMAIN-SUFFIX,duckduckgo.com,Others
+- DOMAIN-SUFFIX,dueapp.com,Others
+- DOMAIN-SUFFIX,dytt8.net,Others
+- DOMAIN-SUFFIX,edgecastcdn.net,Others
+- DOMAIN-SUFFIX,edgekey.net,Others
+- DOMAIN-SUFFIX,edgesuite.net,Others
+- DOMAIN-SUFFIX,engadget.com,Others
+- DOMAIN-SUFFIX,entrust.net,Others
+- DOMAIN-SUFFIX,eurekavpt.com,Others
+- DOMAIN-SUFFIX,evernote.com,Others
+- DOMAIN-SUFFIX,fabric.io,Others
+- DOMAIN-SUFFIX,fast.com,Others
+- DOMAIN-SUFFIX,fastly.net,Others
+- DOMAIN-SUFFIX,fc2.com,Others
+- DOMAIN-SUFFIX,feedburner.com,Others
+- DOMAIN-SUFFIX,feedly.com,Others
+- DOMAIN-SUFFIX,feedsportal.com,Others
+- DOMAIN-SUFFIX,fiftythree.com,Others
+- DOMAIN-SUFFIX,firebaseio.com,Others
+- DOMAIN-SUFFIX,flexibits.com,Others
+- DOMAIN-SUFFIX,flickr.com,Others
+- DOMAIN-SUFFIX,flipboard.com,Others
+- DOMAIN-SUFFIX,g.co,Others
+- DOMAIN-SUFFIX,gabia.net,Others
+- DOMAIN-SUFFIX,geni.us,Others
+- DOMAIN-SUFFIX,gfx.ms,Others
+- DOMAIN-SUFFIX,ggpht.com,Others
+- DOMAIN-SUFFIX,ghostnoteapp.com,Others
+- DOMAIN-SUFFIX,git.io,Others
+- DOMAIN-KEYWORD,github,Others
+- DOMAIN-SUFFIX,globalsign.com,Others
+- DOMAIN-SUFFIX,gmodules.com,Others
+- DOMAIN-SUFFIX,godaddy.com,Others
+- DOMAIN-SUFFIX,golang.org,Others
+- DOMAIN-SUFFIX,gongm.in,Others
+- DOMAIN-SUFFIX,goo.gl,Others
+- DOMAIN-SUFFIX,goodreaders.com,Others
+- DOMAIN-SUFFIX,goodreads.com,Others
+- DOMAIN-SUFFIX,gravatar.com,Others
+- DOMAIN-SUFFIX,gstatic.com,Others
+- DOMAIN-SUFFIX,gvt0.com,Others
+- DOMAIN-SUFFIX,hockeyapp.net,Others
+- DOMAIN-SUFFIX,hotmail.com,Others
+- DOMAIN-SUFFIX,icons8.com,Others
+- DOMAIN-SUFFIX,ift.tt,Others
+- DOMAIN-SUFFIX,ifttt.com,Others
+- DOMAIN-SUFFIX,iherb.com,Others
+- DOMAIN-SUFFIX,imageshack.us,Others
+- DOMAIN-SUFFIX,img.ly,Others
+- DOMAIN-SUFFIX,imgur.com,Others
+- DOMAIN-SUFFIX,imore.com,Others
+- DOMAIN-SUFFIX,instapaper.com,Others
+- DOMAIN-SUFFIX,ipn.li,Others
+- DOMAIN-SUFFIX,is.gd,Others
+- DOMAIN-SUFFIX,issuu.com,Others
+- DOMAIN-SUFFIX,itgonglun.com,Others
+- DOMAIN-SUFFIX,itun.es,Others
+- DOMAIN-SUFFIX,ixquick.com,Others
+- DOMAIN-SUFFIX,j.mp,Others
+- DOMAIN-SUFFIX,js.revsci.net,Others
+- DOMAIN-SUFFIX,jshint.com,Others
+- DOMAIN-SUFFIX,jtvnw.net,Others
+- DOMAIN-SUFFIX,justgetflux.com,Others
+- DOMAIN-SUFFIX,kat.cr,Others
+- DOMAIN-SUFFIX,klip.me,Others
+- DOMAIN-SUFFIX,libsyn.com,Others
+- DOMAIN-SUFFIX,licdn.com,Others
+- DOMAIN-SUFFIX,linkedin.com,Others
+- DOMAIN-SUFFIX,linode.com,Others
+- DOMAIN-SUFFIX,lithium.com,Others
+- DOMAIN-SUFFIX,littlehj.com,Others
+- DOMAIN-SUFFIX,live.com,Others
+- DOMAIN-SUFFIX,live.net,Others
+- DOMAIN-SUFFIX,livefilestore.com,Others
+- DOMAIN-SUFFIX,llnwd.net,Others
+- DOMAIN-SUFFIX,macid.co,Others
+- DOMAIN-SUFFIX,macromedia.com,Others
+- DOMAIN-SUFFIX,macrumors.com,Others
+- DOMAIN-SUFFIX,mashable.com,Others
+- DOMAIN-SUFFIX,mathjax.org,Others
+- DOMAIN-SUFFIX,medium.com,Others
+- DOMAIN-SUFFIX,mega.co.nz,Others
+- DOMAIN-SUFFIX,mega.nz,Others
+- DOMAIN-SUFFIX,megaupload.com,Others
+- DOMAIN-SUFFIX,microsofttranslator.com,Others
+- DOMAIN-SUFFIX,mindnode.com,Others
+- DOMAIN-SUFFIX,mobile01.com,Others
+- DOMAIN-SUFFIX,modmyi.com,Others
+- DOMAIN-SUFFIX,msedge.net,Others
+- DOMAIN-SUFFIX,myfontastic.com,Others
+- DOMAIN-SUFFIX,name.com,Others
+- DOMAIN-SUFFIX,nextmedia.com,Others
+- DOMAIN-SUFFIX,nsstatic.net,Others
+- DOMAIN-SUFFIX,nssurge.com,Others
+- DOMAIN-SUFFIX,nyt.com,Others
+- DOMAIN-SUFFIX,nytimes.com,Others
+- DOMAIN-SUFFIX,office365.com,Others
+- DOMAIN-SUFFIX,omnigroup.com,Others
+- DOMAIN-SUFFIX,onedrive.com,Others
+- DOMAIN-SUFFIX,onenote.com,Others
+- DOMAIN-SUFFIX,ooyala.com,Others
+- DOMAIN-SUFFIX,openvpn.net,Others
+- DOMAIN-SUFFIX,openwrt.org,Others
+- DOMAIN-SUFFIX,orkut.com,Others
+- DOMAIN-SUFFIX,osxdaily.com,Others
+- DOMAIN-SUFFIX,outlook.com,Others
+- DOMAIN-SUFFIX,ow.ly,Others
+- DOMAIN-SUFFIX,paddleapi.com,Others
+- DOMAIN-SUFFIX,parallels.com,Others
+- DOMAIN-SUFFIX,parse.com,Others
+- DOMAIN-SUFFIX,pdfexpert.com,Others
+- DOMAIN-SUFFIX,periscope.tv,Others
+- DOMAIN-SUFFIX,pinboard.in,Others
+- DOMAIN-SUFFIX,pinterest.com,Others
+- DOMAIN-SUFFIX,pixelmator.com,Others
+- DOMAIN-SUFFIX,pixiv.net,Others
+- DOMAIN-SUFFIX,playpcesor.com,Others
+- DOMAIN-SUFFIX,playstation.com,Others
+- DOMAIN-SUFFIX,playstation.com.hk,Others
+- DOMAIN-SUFFIX,playstation.net,Others
+- DOMAIN-SUFFIX,playstationnetwork.com,Others
+- DOMAIN-SUFFIX,pushwoosh.com,Others
+- DOMAIN-SUFFIX,rime.im,Others
+- DOMAIN-SUFFIX,servebom.com,Others
+- DOMAIN-SUFFIX,sfx.ms,Others
+- DOMAIN-SUFFIX,shadowsocks.org,Others
+- DOMAIN-SUFFIX,sharethis.com,Others
+- DOMAIN-SUFFIX,shazam.com,Others
+- DOMAIN-SUFFIX,skype.com,Others
+- DOMAIN-SUFFIX,smartdnsOthers.com,Others
+- DOMAIN-SUFFIX,smartmailcloud.com,Others
+- DOMAIN-SUFFIX,sndcdn.com,Others
+- DOMAIN-SUFFIX,sony.com,Others
+- DOMAIN-SUFFIX,soundcloud.com,Others
+- DOMAIN-SUFFIX,sourceforge.net,Others
+- DOMAIN-SUFFIX,spotify.com,Others
+- DOMAIN-SUFFIX,squarespace.com,Others
+- DOMAIN-SUFFIX,sstatic.net,Others
+- DOMAIN-SUFFIX,st.luluku.pw,Others
+- DOMAIN-SUFFIX,stackoverflow.com,Others
+- DOMAIN-SUFFIX,startpage.com,Others
+- DOMAIN-SUFFIX,staticflickr.com,Others
+- DOMAIN-SUFFIX,steamcommunity.com,Others
+- DOMAIN-SUFFIX,symauth.com,Others
+- DOMAIN-SUFFIX,symcb.com,Others
+- DOMAIN-SUFFIX,symcd.com,Others
+- DOMAIN-SUFFIX,tapbots.com,Others
+- DOMAIN-SUFFIX,tapbots.net,Others
+- DOMAIN-SUFFIX,tdesktop.com,Others
+- DOMAIN-SUFFIX,techcrunch.com,Others
+- DOMAIN-SUFFIX,techsmith.com,Others
+- DOMAIN-SUFFIX,thepiratebay.org,Others
+- DOMAIN-SUFFIX,theverge.com,Others
+- DOMAIN-SUFFIX,time.com,Others
+- DOMAIN-SUFFIX,timeinc.net,Others
+- DOMAIN-SUFFIX,tiny.cc,Others
+- DOMAIN-SUFFIX,tinypic.com,Others
+- DOMAIN-SUFFIX,tmblr.co,Others
+- DOMAIN-SUFFIX,todoist.com,Others
+- DOMAIN-SUFFIX,trello.com,Others
+- DOMAIN-SUFFIX,trustasiassl.com,Others
+- DOMAIN-SUFFIX,tumblr.co,Others
+- DOMAIN-SUFFIX,tumblr.com,Others
+- DOMAIN-SUFFIX,tweetdeck.com,Others
+- DOMAIN-SUFFIX,tweetmarker.net,Others
+- DOMAIN-SUFFIX,twitch.tv,Others
+- DOMAIN-SUFFIX,txmblr.com,Others
+- DOMAIN-SUFFIX,typekit.net,Others
+- DOMAIN-SUFFIX,ubertags.com,Others
+- DOMAIN-SUFFIX,ublock.org,Others
+- DOMAIN-SUFFIX,ubnt.com,Others
+- DOMAIN-SUFFIX,ulyssesapp.com,Others
+- DOMAIN-SUFFIX,urchin.com,Others
+- DOMAIN-SUFFIX,usertrust.com,Others
+- DOMAIN-SUFFIX,v.gd,Others
+- DOMAIN-SUFFIX,vimeo.com,Others
+- DOMAIN-SUFFIX,vimeocdn.com,Others
+- DOMAIN-SUFFIX,vine.co,Others
+- DOMAIN-SUFFIX,vivaldi.com,Others
+- DOMAIN-SUFFIX,vox-cdn.com,Others
+- DOMAIN-SUFFIX,vsco.co,Others
+- DOMAIN-SUFFIX,vultr.com,Others
+- DOMAIN-SUFFIX,w.org,Others
+- DOMAIN-SUFFIX,w3schools.com,Others
+- DOMAIN-SUFFIX,webtype.com,Others
+- DOMAIN-SUFFIX,wikiwand.com,Others
+- DOMAIN-SUFFIX,wikileaks.org,Others
+- DOMAIN-SUFFIX,wikimedia.org,Others
+- DOMAIN-SUFFIX,wikipedia.com,Others
+- DOMAIN-SUFFIX,wikipedia.org,Others
+- DOMAIN-SUFFIX,windows.com,Others
+- DOMAIN-SUFFIX,windows.net,Others
+- DOMAIN-SUFFIX,wire.com,Others
+- DOMAIN-SUFFIX,wordpress.com,Others
+- DOMAIN-SUFFIX,workflowy.com,Others
+- DOMAIN-SUFFIX,wp.com,Others
+- DOMAIN-SUFFIX,wsj.com,Others
+- DOMAIN-SUFFIX,wsj.net,Others
+- DOMAIN-SUFFIX,xda-developers.com,Others
+- DOMAIN-SUFFIX,xeeno.com,Others
+- DOMAIN-SUFFIX,xiti.com,Others
+- DOMAIN-SUFFIX,yahoo.com,Others
+- DOMAIN-SUFFIX,yimg.com,Others
+- DOMAIN-SUFFIX,ying.com,Others
+- DOMAIN-SUFFIX,yoyo.org,Others
+- DOMAIN-SUFFIX,ytimg.com,Others
+
+# Telegram
+- DOMAIN-SUFFIX,telegra.ph,Others
+- DOMAIN-SUFFIX,telegram.org,Others
+
+- IP-CIDR,91.108.56.0/22,Others
+- IP-CIDR,91.108.4.0/22,Others
+- IP-CIDR,91.108.8.0/22,Others
+- IP-CIDR,109.239.140.0/24,Others
+- IP-CIDR,149.154.160.0/20,Others
+- IP-CIDR,149.154.164.0/22,Others
+
+# LAN
+- DOMAIN-SUFFIX,local,DIRECT
+- IP-CIDR,127.0.0.0/8,DIRECT
+- IP-CIDR,172.16.0.0/12,DIRECT
+- IP-CIDR,192.168.0.0/16,DIRECT
+- IP-CIDR,10.0.0.0/8,DIRECT
+- IP-CIDR,17.0.0.0/8,DIRECT
+- IP-CIDR,100.64.0.0/10,DIRECT
+
+# 最终规则
+- GEOIP,CN,DIRECT
+- Match,Proxy
