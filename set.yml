@@ -19,6 +19,8 @@ external-controller: 127.0.0.1:9090
 # - { name: "Proxy", type: select, proxies: ["ss1", "ss2", "vmess1", "auto"] }
 
 Rule:
+#端传媒
+- DOMAIN-SUFFIX,theinitium.com,Others
 #Spark邮箱
 - DOMAIN,api.amplitude.com,Others
 #Twitter短链接
