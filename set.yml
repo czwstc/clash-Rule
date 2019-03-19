@@ -19,6 +19,8 @@ external-controller: 127.0.0.1:9090
 # - { name: "Proxy", type: select, proxies: ["ss1", "ss2", "vmess1", "auto"] }
 
 Rule:
+#政见
+- DOMAIN-SUFFIX,cnpolitics.org,Others
 #端传媒
 - DOMAIN-SUFFIX,theinitium.com,Others
 #Spark邮箱
